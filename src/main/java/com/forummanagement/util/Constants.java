@@ -3,7 +3,7 @@ package com.forummanagement.util;
 public interface Constants {
 	String EMPTY_STRING = "";
 
-	String PAGE_HOME = "toHomePage";
+	String PAGE_LOGIN = "toLoginPage";
 	String PAGE_SHOPPING_CART = "toShoppingCartPage";
 	String PAGE_REPORTING = "toReportingPage";
 	

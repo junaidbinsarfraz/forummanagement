@@ -3,7 +3,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated Jul 5, 2017 12:26:32 PM by Hibernate Tools 5.1.0.Alpha1 -->
 <hibernate-mapping>
-    <class name="com.forummanagement.dao.Category" table="category" catalog="forum" optimistic-lock="version">
+    <class name="com.forummanagement.model.Category" table="category" catalog="forum" optimistic-lock="version">
         <id name="catId" type="java.lang.Integer">
             <column name="cat_id" />
             <generator class="identity" />
@@ -18,7 +18,7 @@
             <key>
                 <column name="topic_cat" not-null="true" />
             </key>
-            <one-to-many class="com.forummanagement.dao.Topic" />
+            <one-to-many class="com.forummanagement.model.Topic" />
         </set>
     </class>
 </hibernate-mapping>

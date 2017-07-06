@@ -3,15 +3,15 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated Jul 5, 2017 12:26:32 PM by Hibernate Tools 5.1.0.Alpha1 -->
 <hibernate-mapping>
-    <class name="com.forummanagement.dao.Post" table="post" catalog="forum" optimistic-lock="version">
+    <class name="com.forummanagement.model.Post" table="post" catalog="forum" optimistic-lock="version">
         <id name="postId" type="java.lang.Integer">
             <column name="post_id" />
             <generator class="identity" />
         </id>
-        <many-to-one name="topic" class="com.forummanagement.dao.Topic" fetch="select">
+        <many-to-one name="topic" class="com.forummanagement.model.Topic" fetch="select">
             <column name="post_topic" not-null="true" />
         </many-to-one>
-        <many-to-one name="user" class="com.forummanagement.dao.User" fetch="select">
+        <many-to-one name="user" class="com.forummanagement.model.User" fetch="select">
             <column name="post_by" not-null="true" />
         </many-to-one>
         <property name="postContent" type="string">

@@ -803,11 +803,11 @@ public class ValidationUtil {
 
 	public static Boolean validatePassword(String oldPassword, String password, String confirmPassword, ValidationErrors validationErrors) {
 
-		validateTextField(true, "Old Password", "OldPassword", oldPassword, validationErrors, 100);
+		/*validateTextField(true, "Old Password", "OldPassword", oldPassword, validationErrors, 100);
 
 		validateTextField(true, "New Password", "NewPassword", password, validationErrors, 100);
 
-		validateTextField(true, "Confirm Password", "ConfirmPassword", confirmPassword, validationErrors, 100);
+		validateTextField(true, "Confirm Password", "ConfirmPassword", confirmPassword, validationErrors, 100);*/
 
 		if (!validationErrors.getAnyError()) {
 

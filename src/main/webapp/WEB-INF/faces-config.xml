@@ -34,9 +34,9 @@
 
 	<navigation-rule>
 		<navigation-case>
-			<from-outcome>toHomePage</from-outcome>
+			<from-outcome>toLoginPage</from-outcome>
 			<redirect />
-			<to-view-id>/index.xhtml</to-view-id>
+			<to-view-id>/login.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 

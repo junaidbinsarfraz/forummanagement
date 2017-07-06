@@ -1,3 +1,7 @@
+CREATE SCHEMA forum;
+
+USE forum;
+
 CREATE TABLE user (
 user_id     INT(8) NOT NULL AUTO_INCREMENT,
 user_name   VARCHAR(30) NOT NULL,

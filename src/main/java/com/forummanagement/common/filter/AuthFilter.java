@@ -53,13 +53,13 @@ public class AuthFilter implements Filter {
 
 			if (modifiedContext.equals(uri) || uri.contains(".xhtml")) {
 
-				if (session.getAttribute("loginUser") != null && uri.endsWith("index.xhtml") || modifiedContext.equals(uri)) {
+				if (session.getAttribute("loginUser") != null && (uri.endsWith("login.xhtml") || uri.endsWith("signup.xhtml")) || modifiedContext.equals(uri)) {
 					response.sendRedirect(serverHomeWithContext + "private/shoppingCart.xhtml");
 					return;
 				}
 
 				if (session.getAttribute("loginUser") == null && uri.contains("private/")) {
-					redirectPage(request, response, serverHomeWithContext + "index.xhtml");
+					redirectPage(request, response, serverHomeWithContext + "login.xhtml");
 					return;
 				}
 			}

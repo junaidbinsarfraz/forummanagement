@@ -15,9 +15,7 @@ public class LoginBean extends AbstractController {
 	private String username;
 	private String password;
 	
-	private User user;	
-	
-	private String page = "login";
+	private User user = new User();
 	
 	private UserDao getUserDao() {
 		return DaoManager.getInstance().getDao(UserDao.class);
@@ -61,14 +59,6 @@ public class LoginBean extends AbstractController {
 		this.user = user;
 	}
 
-	public String getPage() {
-		return page;
-	}
-
-	public void setPage(String page) {
-		this.page = page;
-	}
-
 	private boolean validate(Boolean signup) {
 		getValidationErrors().clear();
 		
@@ -78,7 +68,7 @@ public class LoginBean extends AbstractController {
 		} else  {
 			ValidationUtil.validateTextField(true, "Username", "Username", this.user.getUserName(), getValidationErrors());
 			ValidationUtil.validateTextField(true, "Password", "Password", this.user.getUserPass(), getValidationErrors());
-			ValidationUtil.validateTextField(true, "PasswordAgain", "PasswordAgain", this.username, getValidationErrors());
+			ValidationUtil.validateTextField(true, "Confirm Password", "PasswordMisMatch", this.password, getValidationErrors());
 			ValidationUtil.validateEmail(true, "Email", "Email", this.user.getUserEmail(), getValidationErrors(), 500);
 			ValidationUtil.validatePassword("No user password", this.user.getUserPass(), this.password, getValidationErrors()); // PasswordMisMatch field
 		}
@@ -99,7 +89,7 @@ public class LoginBean extends AbstractController {
 				
 				// TODO: Change this
 				getSessionBean().loadSessionData(user);
-				return Constants.PAGE_SHOPPING_CART;
+				return Constants.EMPTY_STRING;
 			}
 		}
 		
@@ -118,7 +108,7 @@ public class LoginBean extends AbstractController {
 					getValidationErrors().addError("GeneralError", "Unable to register");
 				} else {
 					// TODO: Change it
-					return Constants.PAGE_SHOPPING_CART; // 
+					return Constants.EMPTY_STRING; // 
 				}
 				
 				/*user = (User) statusMessage.getObjects().get("user");
@@ -146,17 +136,7 @@ public class LoginBean extends AbstractController {
 			session.invalidate();
 		}
 		
-		return Constants.PAGE_HOME;
+		return Constants.PAGE_LOGIN;
 	}
 	
-	public String gotoLogin() {
-		this.page = "login";
-		return Constants.PAGE_HOME;
-	}
-	
-	public String gotoSignup() {
-		this.page = "signup";
-		return Constants.PAGE_HOME;
-	}
-
 }

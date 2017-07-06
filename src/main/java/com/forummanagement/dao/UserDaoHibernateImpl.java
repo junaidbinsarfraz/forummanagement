@@ -1,5 +1,6 @@
 package com.forummanagement.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -25,8 +26,8 @@ public class UserDaoHibernateImpl implements UserDao {
 
 			Session session = getSession();
 
-			Criteria criteria = session.createCriteria(User.class).add(Restrictions.eq("user_name", username))
-					.add(Restrictions.eq("user_pass", password));
+			Criteria criteria = session.createCriteria(User.class).add(Restrictions.eq("userName", username))
+					.add(Restrictions.eq("userPass", password));
 
 			user = (User) criteria.uniqueResult();
 
@@ -45,6 +46,8 @@ public class UserDaoHibernateImpl implements UserDao {
 
 		Session session = null;
 		Transaction tx = null;
+		
+		user.setUserDate(new Date());
 
 		try {
 
@@ -106,7 +109,7 @@ public class UserDaoHibernateImpl implements UserDao {
 
 			Session session = getSession();
 
-			Criteria criteria = session.createCriteria(User.class).add(Restrictions.eq("user_name", username));
+			Criteria criteria = session.createCriteria(User.class).add(Restrictions.eq("userName", username));
 
 			user = (User) criteria.uniqueResult();
 
