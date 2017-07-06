@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 5, 2017 12:26:32 PM by Hibernate Tools 5.1.0.Alpha1 -->
+<hibernate-mapping>
+    <class name="com.forummanagement.dao.User" table="user" catalog="forum" optimistic-lock="version">
+        <id name="userId" type="java.lang.Integer">
+            <column name="user_id" />
+            <generator class="identity" />
+        </id>
+        <property name="userName" type="string">
+            <column name="user_name" length="30" not-null="true" unique="true" />
+        </property>
+        <property name="userPass" type="string">
+            <column name="user_pass" not-null="true" />
+        </property>
+        <property name="userEmail" type="string">
+            <column name="user_email" not-null="true" />
+        </property>
+        <property name="userDate" type="timestamp">
+            <column name="user_date" length="19" not-null="true" />
+        </property>
+        <property name="userLevel" type="int">
+            <column name="user_level" not-null="true" />
+        </property>
+        <set name="topics" table="topic" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="topic_by" not-null="true" />
+            </key>
+            <one-to-many class="com.forummanagement.dao.Topic" />
+        </set>
+        <set name="posts" table="post" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="post_by" not-null="true" />
+            </key>
+            <one-to-many class="com.forummanagement.dao.Post" />
+        </set>
+    </class>
+</hibernate-mapping>

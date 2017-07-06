@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 5, 2017 12:26:32 PM by Hibernate Tools 5.1.0.Alpha1 -->
+<hibernate-mapping>
+    <class name="com.forummanagement.dao.Category" table="category" catalog="forum" optimistic-lock="version">
+        <id name="catId" type="java.lang.Integer">
+            <column name="cat_id" />
+            <generator class="identity" />
+        </id>
+        <property name="catName" type="string">
+            <column name="cat_name" not-null="true" unique="true" />
+        </property>
+        <property name="catDescription" type="string">
+            <column name="cat_description" not-null="true" />
+        </property>
+        <set name="topics" table="topic" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="topic_cat" not-null="true" />
+            </key>
+            <one-to-many class="com.forummanagement.dao.Topic" />
+        </set>
+    </class>
+</hibernate-mapping>
